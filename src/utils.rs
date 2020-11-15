@@ -32,6 +32,5 @@ pub fn parse_bytes_with_length(input: &[u8], length: usize) -> IResult<&[u8], &[
 
 #[inline(always)]
 pub fn parse_str_with_length(input: &[u8], length: usize) -> IResult<&[u8], &str> {
-    // terminated(map_res!(input, take!($size), $crate::lib::std::str::from_utf8), crlf)(input)
     terminated(map_res(take(length), from_utf8), crlf)(input)
 }
