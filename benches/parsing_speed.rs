@@ -1,8 +1,8 @@
 use criterion::{black_box, criterion_group, criterion_main, Criterion, Throughput};
 use redis_parser::resp2::{parse as parse2, Resp2Type};
 
-fn resp_2_parse(mut data: &[u8]) -> Vec<Resp2Type> {
-    let it = std::iter::from_fn(move || {
+fn resp_2_parse(mut data: &[u8]) {
+    loop {
         match parse2(data) {
             // when successful, a nom parser returns a tuple of
             // the remaining input and the output value.
@@ -10,13 +10,13 @@ fn resp_2_parse(mut data: &[u8]) -> Vec<Resp2Type> {
             // remaining input, to be parsed on the next call
             Ok((i, o)) => {
                 data = i;
-                Some(o)
+                black_box(o);
             }
-            _ => None,
+            _ => {
+                break;
+            }
         }
-    });
-
-    it.collect()
+    }
 }
 
 fn run_2_parser(c: &mut Criterion) {
