@@ -15,6 +15,8 @@ num-bigint = "0.3.1"
 
 [dev-dependencies]
 criterion = "0.3"
+structopt = "0.3.20"
+clap = "2.33.3"
 
 [[bench]]
 name = "parsing_speed"
