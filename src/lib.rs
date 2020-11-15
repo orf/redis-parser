@@ -10,6 +10,7 @@
 /// assert_eq!(parse2("+test\r\n".as_bytes()), Ok((&b""[..], Resp2Type::String("test"))));
 /// assert_eq!(parse3("#f\r\n".as_bytes()), Ok((&b""[..], Resp3Type::Boolean(false))));
 /// ```
+
 pub mod resp2;
 pub mod resp3;
 mod utils;
