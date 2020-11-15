@@ -1,5 +1,6 @@
 # Redis Protocol Parser
 [![Crates.io](https://img.shields.io/crates/v/redis-parser.svg)](https://crates.io/crates/redis-parser)
+[![Docs](https://docs.rs/redis-parser/badge.svg)](https://docs.rs/redis-parser/)
 [![Run Tests](https://github.com/orf/redis-parser/workflows/Run%20Tests/badge.svg)](https://github.com/orf/pinger/redis-parser)
 
 This library provides a high-performance, zero-copy parser for the RESP2 and RESP3 protocols.
