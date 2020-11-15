@@ -4,10 +4,6 @@ use redis_parser::resp2::{parse as parse2, Resp2Type};
 fn resp_2_parse(mut data: &[u8]) {
     loop {
         match parse2(data) {
-            // when successful, a nom parser returns a tuple of
-            // the remaining input and the output value.
-            // So we replace the captured input data with the
-            // remaining input, to be parsed on the next call
             Ok((i, o)) => {
                 data = i;
                 black_box(o);
