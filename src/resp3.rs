@@ -73,7 +73,7 @@ fn parse_error(input: &[u8]) -> IResult<&[u8], Resp3Type> {
 
 fn parse_number(input: &[u8]) -> IResult<&[u8], Resp3Type> {
     let (input, num) = parse_integer_with_prefix(input, ':')?;
-    return Ok((input, Resp3Type::Number(num)));
+    Ok((input, Resp3Type::Number(num)))
 }
 
 fn parse_null(input: &[u8]) -> IResult<&[u8], Resp3Type> {
