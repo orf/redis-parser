@@ -18,7 +18,8 @@ fn resp_2_parse(mut data: &[u8]) {
 fn run_2_parser(c: &mut Criterion) {
     let raw_text = include_str!("resp2_data.txt");
     let replaced = raw_text.replace('\n', "\r\n");
-    let data = replaced.as_bytes();
+    let repeated = replaced.repeat(30);
+    let data = repeated.as_bytes();
 
     let mut group = c.benchmark_group("res2");
     group.throughput(Throughput::Bytes(data.len() as u64));

@@ -21,3 +21,6 @@ clap = "2.33.3"
 [[bench]]
 name = "parsing_speed"
 harness = false
+
+[profile.release]
+lto = true
