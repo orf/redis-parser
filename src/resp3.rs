@@ -1,3 +1,5 @@
+/// # RESP2
+/// This module provides utilities to parse the RESP3 protocol.
 use nom::IResult;
 use num_bigint::BigInt;
 
@@ -179,6 +181,7 @@ fn parse_stream_end(input: &[u8]) -> IResult<&[u8], Resp3Type> {
     Ok((input, Resp3Type::StreamEnd))
 }
 
+/// Parse bytes into a `Resp3Type` enum
 pub fn parse(input: &[u8]) -> IResult<&[u8], Resp3Type> {
     alt((
         parse_blob_string,

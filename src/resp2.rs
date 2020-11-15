@@ -1,9 +1,12 @@
+/// # RESP2
+/// This module provides utilities to parse the RESP2 protocol.
 use nom::branch::alt;
 use nom::multi::many_m_n;
 use nom::{bytes::streaming::tag, IResult};
 
 use crate::utils::{parse_bytes_with_length, parse_integer_with_prefix, parse_str_with_prefix};
 
+/// Resp2Type represents all possible response types from the RESP2 protocol.
 #[derive(Debug, PartialEq)]
 pub enum Resp2Type<'a> {
     String(&'a str),
@@ -52,6 +55,7 @@ fn parse_array(input: &[u8]) -> IResult<&[u8], Resp2Type> {
     Ok((input, Resp2Type::Array(result)))
 }
 
+/// Parse bytes into a `Resp2Type` enum
 pub fn parse(input: &[u8]) -> IResult<&[u8], Resp2Type> {
     alt((
         parse_simple_string,
